@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+package-lock.json
+*.log
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.env
+service-account.json
+service-account*.json
+!service-account.json.example
+
+# Build & Output Directories
+dist/
+dist-ssr/
+build/
+*.app
+
+# Python Cache & Virtual Envs
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+
+# IDE & OS Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

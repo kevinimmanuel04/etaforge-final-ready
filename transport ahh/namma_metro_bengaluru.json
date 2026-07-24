@@ -1,0 +1,117 @@
+{
+  "city": "Bengaluru",
+  "metroSystem": "Namma Metro",
+  "lines": [
+    {
+      "id": "purple-line",
+      "name": "Purple Line",
+      "color": "#a855f7",
+      "stations": [
+        {"id": "whf", "name": "Whitefield (Kadugodi)", "lat": 12.9959, "lon": 77.7621},
+        {"id": "ktp", "name": "Kadugodi Tree Park", "lat": 12.9880, "lon": 77.7550},
+        {"id": "hfc", "name": "Hopefarm Channasandra", "lat": 12.9820, "lon": 77.7480},
+        {"id": "pa", "name": "Pattandur Agrahara", "lat": 12.9780, "lon": 77.7400},
+        {"id": "ssh", "name": "Sri Sathya Sai Hospital", "lat": 12.9750, "lon": 77.7320},
+        {"id": "nal", "name": "Nallurhalli", "lat": 12.9730, "lon": 77.7250},
+        {"id": "kun", "name": "Kundalahalli", "lat": 12.9710, "lon": 77.7150},
+        {"id": "see", "name": "Seetharamapalya", "lat": 12.9700, "lon": 77.7050},
+        {"id": "hoo", "name": "Hoodi", "lat": 12.9720, "lon": 77.6950},
+        {"id": "gar", "name": "Garudacharapalya", "lat": 12.9750, "lon": 77.6850},
+        {"id": "sin", "name": "Singayyanapalya", "lat": 12.9800, "lon": 77.6750},
+        {"id": "krp", "name": "Krishnarajapura (KR Pura)", "lat": 12.9950, "lon": 77.6650},
+        {"id": "ben", "name": "Benniganahalli", "lat": 12.9900, "lon": 77.6550},
+        {"id": "bay", "name": "Baiyappanahalli", "lat": 12.9906, "lon": 77.6527},
+        {"id": "svr", "name": "Swami Vivekananda Road", "lat": 12.9850, "lon": 77.6350},
+        {"id": "ind", "name": "Indiranagar", "lat": 12.9784, "lon": 77.6408},
+        {"id": "hal", "name": "Halasuru", "lat": 12.9760, "lon": 77.6250},
+        {"id": "tri", "name": "Trinity", "lat": 12.9740, "lon": 77.6180},
+        {"id": "mgr", "name": "Mahatma Gandhi Road", "lat": 12.9750, "lon": 77.6090},
+        {"id": "cbp", "name": "Cubbon Park", "lat": 12.9810, "lon": 77.5970},
+        {"id": "vs", "name": "Vidhana Soudha", "lat": 12.9790, "lon": 77.5920},
+        {"id": "mvs", "name": "Sir M. Visvesvaraya Station", "lat": 12.9760, "lon": 77.5880},
+        {"id": "maj", "name": "Majestic", "lat": 12.9757, "lon": 77.5728},
+        {"id": "crs", "name": "City Railway Station", "lat": 12.9781, "lon": 77.5696},
+        {"id": "mr", "name": "Magadi Road", "lat": 12.9760, "lon": 77.5550},
+        {"id": "hsl", "name": "Hosahalli", "lat": 12.9740, "lon": 77.5450},
+        {"id": "vjy", "name": "Vijayanagar", "lat": 12.9710, "lon": 77.5350},
+        {"id": "att", "name": "Attiguppe", "lat": 12.9650, "lon": 77.5280},
+        {"id": "dn", "name": "Deepanjali Nagar", "lat": 12.9550, "lon": 77.5250},
+        {"id": "msr", "name": "Mysuru Road", "lat": 12.9460, "lon": 77.5200},
+        {"id": "pn", "name": "Pantharapalya-Nayandahalli", "lat": 12.9400, "lon": 77.5100},
+        {"id": "rrn", "name": "Rajarajeshwari Nagar", "lat": 12.9300, "lon": 77.5000},
+        {"id": "jnb", "name": "Jnanabharathi", "lat": 12.9250, "lon": 77.4950},
+        {"id": "ptn", "name": "Pattanagere", "lat": 12.9200, "lon": 77.4900},
+        {"id": "kbt", "name": "Kengeri Bus Terminal", "lat": 12.9150, "lon": 77.4850},
+        {"id": "kng", "name": "Kengeri", "lat": 12.9080, "lon": 77.4780},
+        {"id": "cgl", "name": "Challaghatta", "lat": 12.9000, "lon": 77.4700}
+      ],
+      "polyline": [
+        [77.7621, 12.9959], [77.7550, 12.9880], [77.7480, 12.9820], [77.7400, 12.9780], [77.7320, 12.9750], [77.7250, 12.9730], [77.7150, 12.9710], [77.7050, 12.9700], [77.6950, 12.9720], [77.6850, 12.9750], [77.6750, 12.9800], [77.6650, 12.9950], [77.6550, 12.9900], [77.6527, 12.9906], [77.6350, 12.9850], [77.6408, 12.9784], [77.6250, 12.9760], [77.6180, 12.9740], [77.6090, 12.9750], [77.5970, 12.9810], [77.5920, 12.9790], [77.5880, 12.9760], [77.5728, 12.9757], [77.5696, 12.9781], [77.5550, 12.9760], [77.5450, 12.9740], [77.5350, 12.9710], [77.5280, 12.9650], [77.5250, 12.9550], [77.5200, 12.9460], [77.5100, 12.9400], [77.5000, 12.9300], [77.4950, 12.9250], [77.4900, 12.9200], [77.4850, 12.9150], [77.4780, 12.9080], [77.4700, 12.9000]
+      ]
+    },
+    {
+      "id": "green-line",
+      "name": "Green Line",
+      "color": "#10b981",
+      "stations": [
+        {"id": "mdv", "name": "Madavara", "lat": 13.0560, "lon": 77.5300},
+        {"id": "cbk", "name": "Chikkabidarakallu", "lat": 13.0480, "lon": 77.5320},
+        {"id": "mjn", "name": "Manjunath Nagar", "lat": 13.0400, "lon": 77.5340},
+        {"id": "ngs", "name": "Nagasandra", "lat": 13.0350, "lon": 77.5360},
+        {"id": "dsr", "name": "Dasarahalli", "lat": 13.0280, "lon": 77.5400},
+        {"id": "jll", "name": "Jalahalli", "lat": 13.0200, "lon": 77.5450},
+        {"id": "pyi", "name": "Peenya Industry", "lat": 13.0150, "lon": 77.5500},
+        {"id": "pyd", "name": "Peenya Depot", "lat": 13.0100, "lon": 77.5520},
+        {"id": "gpt", "name": "Goraguntepalya", "lat": 13.0050, "lon": 77.5550},
+        {"id": "ysp", "name": "Yeshwanthpur", "lat": 13.0000, "lon": 77.5580},
+        {"id": "ssf", "name": "Sandal Soap Factory", "lat": 12.9950, "lon": 77.5600},
+        {"id": "mhl", "name": "Mahalakshmi", "lat": 12.9900, "lon": 77.5620},
+        {"id": "rjn", "name": "Rajajinagara", "lat": 12.9850, "lon": 77.5650},
+        {"id": "kvr", "name": "Kuvempu Road", "lat": 12.9800, "lon": 77.5680},
+        {"id": "srm", "name": "Srirampura", "lat": 12.9780, "lon": 77.5700},
+        {"id": "spr", "name": "Sampige Road", "lat": 12.9760, "lon": 77.5710},
+        {"id": "maj2", "name": "Majestic", "lat": 12.9757, "lon": 77.5728},
+        {"id": "chk", "name": "Chickpete", "lat": 12.9700, "lon": 77.5730},
+        {"id": "krm", "name": "KR Market", "lat": 12.9650, "lon": 77.5740},
+        {"id": "nc", "name": "National College", "lat": 12.9550, "lon": 77.5750},
+        {"id": "lbg", "name": "Lalbagh", "lat": 12.9460, "lon": 77.5760},
+        {"id": "sec", "name": "South End Circle", "lat": 12.9400, "lon": 77.5780},
+        {"id": "jyg", "name": "Jayanagar", "lat": 12.9300, "lon": 77.5800},
+        {"id": "rvr", "name": "RV Road", "lat": 12.9250, "lon": 77.5820},
+        {"id": "bnk", "name": "Banashankari", "lat": 12.9180, "lon": 77.5750},
+        {"id": "jpn", "name": "JP Nagar", "lat": 12.9100, "lon": 77.5740},
+        {"id": "ych", "name": "Yelachenahalli", "lat": 12.9000, "lon": 77.5730},
+        {"id": "kkc", "name": "Konanakunte Cross", "lat": 12.8900, "lon": 77.5720},
+        {"id": "dkl", "name": "Doddakallasandra", "lat": 12.8800, "lon": 77.5710},
+        {"id": "vjh", "name": "Vajarahalli", "lat": 12.8700, "lon": 77.5700},
+        {"id": "tpt", "name": "Thalaghattapura", "lat": 12.8600, "lon": 77.5690},
+        {"id": "sik", "name": "Silk Institute", "lat": 12.8500, "lon": 77.5680}
+      ],
+      "polyline": [
+        [77.5300, 13.0560], [77.5320, 13.0480], [77.5340, 13.0400], [77.5360, 13.0350], [77.5400, 13.0280], [77.5450, 13.0200], [77.5500, 13.0150], [77.5520, 13.0100], [77.5550, 13.0050], [77.5580, 13.0000], [77.5600, 12.9950], [77.5620, 12.9900], [77.5650, 12.9850], [77.5680, 12.9800], [77.5700, 12.9780], [77.5710, 12.9760], [77.5728, 12.9757], [77.5730, 12.9700], [77.5740, 12.9650], [77.5750, 12.9550], [77.5760, 12.9460], [77.5780, 12.9400], [77.5800, 12.9300], [77.5820, 12.9250], [77.5750, 12.9180], [77.5740, 12.9100], [77.5730, 12.9000], [77.5720, 12.8900], [77.5710, 12.8800], [77.5700, 12.8700], [77.5690, 12.8600], [77.5680, 12.8500]
+      ]
+    },
+    {
+      "id": "yellow-line",
+      "name": "Yellow Line",
+      "color": "#eab308",
+      "stations": [
+        {"id": "rvr2", "name": "RV Road", "lat": 12.9250, "lon": 77.5820},
+        {"id": "jdh", "name": "Jayadeva Hospital", "lat": 12.9160, "lon": 77.5960},
+        {"id": "btm", "name": "BTM Layout", "lat": 12.9165, "lon": 77.6100},
+        {"id": "slb", "name": "Silk Board", "lat": 12.9177, "lon": 77.6233},
+        {"id": "hsr", "name": "HSR Layout", "lat": 12.9120, "lon": 77.6400},
+        {"id": "kdl", "name": "Kudlu Gate", "lat": 12.9050, "lon": 77.6500},
+        {"id": "sng", "name": "Singasandra", "lat": 12.8980, "lon": 77.6600},
+        {"id": "hsr2", "name": "Hosa Road", "lat": 12.8900, "lon": 77.6700},
+        {"id": "ecp1", "name": "Electronic City Phase 1", "lat": 12.8458, "lon": 77.6630},
+        {"id": "ecp2", "name": "Electronic City Phase 2", "lat": 12.8400, "lon": 77.6750},
+        {"id": "hbg", "name": "Hebbagodi", "lat": 12.8300, "lon": 77.6850},
+        {"id": "bmm", "name": "Bommasandra", "lat": 12.8200, "lon": 77.7050}
+      ],
+      "polyline": [
+        [77.5820, 12.9250], [77.5960, 12.9160], [77.6100, 12.9165], [77.6233, 12.9177], [77.6400, 12.9120], [77.6500, 12.9050], [77.6600, 12.8980], [77.6700, 12.8900], [77.6630, 12.8458], [77.6750, 12.8400], [77.6850, 12.8300], [77.7050, 12.8200]
+      ]
+    }
+  ]
+}

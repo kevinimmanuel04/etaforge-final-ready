@@ -1,0 +1,41 @@
+{
+    "KARNATAKA": [
+        {"code": "SBC", "name": "KSR Bengaluru", "id": "136"},
+        {"code": "YPR", "name": "Yesvantpur", "id": "997"},
+        {"code": "SMVB", "name": "SMVT Bengaluru", "id": "12827"},
+        {"code": "WFD", "name": "Whitefield", "id": "993"},
+        {"code": "KJM", "name": "Krishnarajapuram", "id": "994"},
+        {"code": "MYS", "name": "Mysuru Jn", "id": "349"},
+        {"code": "UBL", "name": "Hubballi Jn", "id": "289"}
+    ],
+    "TAMIL_NADU": [
+        {"code": "MAS", "name": "MGR Chennai Central", "id": "35"},
+        {"code": "MS", "name": "Chennai Egmore", "id": "36"},
+        {"code": "TBM", "name": "Tambaram", "id": "38"},
+        {"code": "MDU", "name": "Madurai Jn", "id": "790"},
+        {"code": "CBE", "name": "Coimbatore Jn", "id": "41"},
+        {"code": "TPJ", "name": "Tiruchchirappali Jn", "id": "787"},
+        {"code": "CAPE", "name": "Kanniyakumari", "id": "1010"}
+    ],
+    "TELANGANA": [
+        {"code": "SC", "name": "Secunderabad Jn", "id": "835"},
+        {"code": "HYB", "name": "Hyderabad Deccan", "id": "834"},
+        {"code": "WL", "name": "Warangal", "id": "27"}
+    ],
+    "ANDHRA_PRADESH": [
+        {"code": "BZA", "name": "Vijayawada Jn", "id": "29"},
+        {"code": "VSKP", "name": "Visakhapatnam", "id": "401"},
+        {"code": "GNT", "name": "Guntur Jn", "id": "489"}
+    ],
+    "KERALA": [
+        {"code": "TVC", "name": "Thiruvananthapuram Cntl", "id": "59"},
+        {"code": "KCVL", "name": "Kochuveli", "id": "1009"},
+        {"code": "ERS", "name": "Ernakulam Jn (South)", "id": "52"},
+        {"code": "ERN", "name": "Ernakulam Town (North)", "id": "51"},
+        {"code": "CLT", "name": "Kozhikode Main", "id": "1242"}
+    ],
+    "MAHARASHTRA": [
+        {"code": "CSMT", "name": "Mumbai CSMT", "id": "12282"},
+        {"code": "LTT", "name": "Lokmanya Tilak Term", "id": "100"}
+    ]
+}
