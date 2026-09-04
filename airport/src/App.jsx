@@ -577,22 +577,33 @@ export default function App({ onBack }) {
   }, []);
 
   useEffect(() => {
-    if (!user || !sessionStarted) return; 
+    if (!sessionStarted) return; 
     const docId = mode === 'flight' ? 'current_search' : 'current_airport';
     return onSnapshot(doc(db, 'etaforge_live_flights', docId), (s) => {
-        if (s.exists()) setActiveData(prev => ({...prev, ...s.data()}));
+        if (s.exists()) {
+            const data = s.data();
+            const cleanSearch = searchQuery.trim().toUpperCase().replace(/[\s-]+/g, '');
+            if (!cleanSearch) return;
+            if (mode === 'flight') {
+                const flightNum = (data.number || '').toUpperCase().replace(/[\s-]+/g, '');
+                if (flightNum !== cleanSearch) return; // Do not show previous flight data!
+            } else {
+                const airportIata = (data.iata || '').toUpperCase();
+                if (airportIata !== cleanSearch && !cleanSearch.includes(airportIata)) return;
+            }
+            setActiveData(data);
+        }
     });
-  }, [mode, user, sessionStarted]);
+  }, [mode, sessionStarted, searchQuery]);
 
   useEffect(() => {
-    if (!user) return;
     return onSnapshot(doc(db, 'etaforge_requests', 'active_request'), (s) => {
       if (s.exists() && s.data().query === searchQuery.toUpperCase()) {
         const st = s.data().status;
         setReqStatus(st === 'completed' ? 'Live Data Active' : (st === 'processing' ? 'Processing...' : st));
       }
     });
-  }, [searchQuery, user]);
+  }, [searchQuery]);
 
   const triggerRequest = async (q, d) => {
       if(!q) return;
@@ -608,7 +619,7 @@ export default function App({ onBack }) {
   };
 
   const handleSearch = async () => {
-    if (!searchQuery.trim() || !user) return;
+    if (!searchQuery.trim()) return;
     const q = searchQuery.trim().toUpperCase();
     
     setSessionStarted(true); 
@@ -622,7 +633,7 @@ export default function App({ onBack }) {
     heartbeatRef.current = setInterval(() => {
         console.log("Heartbeat: Refreshing data...");
         triggerRequest(q, searchDate);
-    }, 15000);
+    }, 45000);
   };
 
   const toggleTheme = () => setTheme(prev => prev === 'dark' ? 'light' : 'dark');

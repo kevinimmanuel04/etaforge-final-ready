@@ -410,7 +410,8 @@ const MapView = ({ center, zoom, route, mode, onStationClick, stations, nextStat
   }, [center, zoom, mapObj]);
 
   useEffect(() => {
-    if (!googleMapsLoaded || mode !== 'TRACKING' || !route || route.length === 0) {
+    const routeList = Array.isArray(route) ? route : (route ? Object.values(route) : []);
+    if (!googleMapsLoaded || mode !== 'TRACKING' || routeList.length === 0) {
         setMappedStations([]);
         return;
     }
@@ -440,9 +441,9 @@ const MapView = ({ center, zoom, route, mode, onStationClick, stations, nextStat
         setMappedStations([]);
         let currentMapped = [];
 
-        for (let i = 0; i < route.length; i++) {
+        for (let i = 0; i < routeList.length; i++) {
             if (isCancelled) break;
-            const station = route[i];
+            const station = routeList[i];
 
             // 1. Already has coordinates
             if (station.lat && station.lng) {
@@ -846,6 +847,8 @@ export default function App({ onBack, voiceSearchQuery }) {
   const [mapCenter, setMapCenter] = useState(defaultCenter);
   const [mapZoom, setMapZoom] = useState(6);
   const [isDarkMode, setIsDarkMode] = useState(true); // Default Dark Mode
+  const trackStartTimeRef = useRef(0);
+  const stationStartTimeRef = useRef(0);
 
   useEffect(() => {
     const unsubAuth = onAuthStateChanged(auth, (u) => {
@@ -874,21 +877,44 @@ export default function App({ onBack, voiceSearchQuery }) {
   }, []);
 
   useEffect(() => {
-    if (!activeStation || !user) return;
+    if (!activeStation) return;
     setStationData(null);
     const stationRef = ref(db, 'stations_data/' + activeStation.code);
-    const unsub = onValue(stationRef, (snap) => setStationData(snap.val()));
-    return () => unsub();
-  }, [activeStation, user]);
-
-  useEffect(() => {
-    if (!trackTrainNo || !user) return;
-    const trackRef = ref(db, 'tracking_data/' + trackTrainNo);
-    const unsub = onValue(trackRef, (snap) => {
-        setRawTrackData(snap.val());
+    const unsub = onValue(stationRef, (snap) => {
+        const val = snap.val();
+        if (!val) {
+            setStationData(null);
+            return;
+        }
+        if (val.loading_status === 'scanning') {
+            setStationData(prev => ({ ...(prev || {}), loading_status: 'scanning', trains: null }));
+        } else if (val.loading_status === 'success' || val.trains) {
+            setStationData(val);
+        }
     });
     return () => unsub();
-  }, [trackTrainNo, user]); 
+  }, [activeStation]);
+
+  useEffect(() => {
+    if (!trackTrainNo) return;
+    setRawTrackData(null);
+    const trackRef = ref(db, 'tracking_data/' + trackTrainNo);
+    const unsub = onValue(trackRef, (snap) => {
+        const val = snap.val();
+        if (!val) {
+            setRawTrackData(null);
+            return;
+        }
+        if (val.loading_status === 'tracking') {
+            // Actively fetching fresh data, do not show previous old data!
+            setRawTrackData(null);
+        } else if (val.loading_status === 'success' || (val.route && val.route.length > 0)) {
+            const routeArray = Array.isArray(val.route) ? val.route : (val.route ? Object.values(val.route) : []);
+            setRawTrackData({ ...val, route: routeArray });
+        }
+    });
+    return () => unsub();
+  }, [trackTrainNo]); 
 
   // Voice search trigger - automatically search when voice command is received
   useEffect(() => {
@@ -899,17 +925,19 @@ export default function App({ onBack, voiceSearchQuery }) {
   }, [voiceSearchQuery]); 
 
   const refreshStation = () => {
-    if (!activeStation || !user) return;
+    if (!activeStation) return;
     const cmdStr = `${activeStation.code}|${activeStation.id}|${activeStation.name}`;
-    setStationData(prev => ({ ...prev, loading_status: 'scanning' }));
+    setStationData(prev => ({ ...prev, loading_status: 'scanning', trains: null }));
+    set(ref(db, 'stations_data/' + activeStation.code + '/loading_status'), 'scanning').catch(() => {});
     set(ref(db, 'cmd/get_station'), cmdStr).catch(console.error);
   };
 
   const handleTrackClick = (trainNo) => {
-    if (!user) return;
+    if (!trainNo) return;
     setTrackTrainNo(trainNo);
     setView("TRACKING"); 
     setRawTrackData(null); 
+    set(ref(db, 'tracking_data/' + trainNo + '/loading_status'), 'tracking').catch(() => {});
     set(ref(db, 'cmd/track_train'), trainNo).catch(console.error);
   };
 
@@ -925,7 +953,7 @@ export default function App({ onBack, voiceSearchQuery }) {
         setMapCenter({ lat: stn.lat, lng: stn.lng });
         setMapZoom(14);
         setSheetState("expanded");
-        if (user) refreshStation(); 
+        refreshStation(); 
     }
   };
   
@@ -934,7 +962,7 @@ export default function App({ onBack, voiceSearchQuery }) {
       setMapCenter({ lat: stn.lat, lng: stn.lng });
       setMapZoom(14);
       setSheetState("expanded");
-      if (user) refreshStation();
+      refreshStation();
   };
 
   const toggleSheet = () => {
@@ -982,7 +1010,7 @@ export default function App({ onBack, voiceSearchQuery }) {
             setMapCenter({ lat: stn.lat, lng: stn.lng });
             setMapZoom(14);
             setSheetState("expanded");
-            if (user) refreshStation();
+            refreshStation();
           } else {
               console.warn('Station not found:', val);
           }
@@ -995,11 +1023,13 @@ export default function App({ onBack, voiceSearchQuery }) {
 
   const renderTimelineWithInListDays = () => {
       if (!rawTrackData?.route) return null;
+      const routeList = Array.isArray(rawTrackData.route) ? rawTrackData.route : Object.values(rawTrackData.route);
+      if (routeList.length === 0) return null;
       
       let currentDay = 1;
       let previousTime = -1;
       const startDateStr = rawTrackData.start_date || rawTrackData.journey_date; 
-      const totalStations = rawTrackData.route.length;
+      const totalStations = routeList.length;
       
       // Helper: Convert "10:50 PM" or "22:50" to minutes since midnight
       const parseTimeToMinutes = (timeStr) => {
@@ -1022,7 +1052,7 @@ export default function App({ onBack, voiceSearchQuery }) {
           return -1;
       };
       
-      return rawTrackData.route.map((stn, index) => {
+      return routeList.map((stn, index) => {
           let dayBadge = null;
           
           const timeStr = stn.sch_dep !== '-' ? stn.sch_dep : stn.sch_arr;

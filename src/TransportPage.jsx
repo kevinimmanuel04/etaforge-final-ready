@@ -8,7 +8,7 @@ import VideoTransition from './components/VideoTransition';
 // --- CONFIGURATION ---
 const GOOGLE_MAPS_API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || "AIzaSyBta64CrHTAb8w0cTJV9eLl1PjecrQ5O2Q"; 
 const BENGALURU_CENTER = { lat: 12.9716, lng: 77.5946 };
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = import.meta.env.VITE_TRANSPORT_BACKEND_URL || "http://localhost:3000";
 
 // --- STATIC DATA ---
 // --- DATA: METRO STATIONS ---
